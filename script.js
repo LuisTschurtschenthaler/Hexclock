@@ -1,4 +1,5 @@
 const clock = document.getElementById("clock");
+const hexclock = document.getElementById("hexclock");
 const background = document.getElementById("background");
 
 function format(input) {
@@ -6,7 +7,7 @@ function format(input) {
   return input;
 }
 
-function getTime() {
+function updateTime() {
   let date = new Date();
   let hours = format(date.getHours());
   let minutes = format(date.getMinutes());
@@ -14,8 +15,9 @@ function getTime() {
 
   let color = "#" + hours + minutes + seconds;
 
-  clock.innerHTML = color;
-  background.style.backgroundColor = color;
+  clock.innerHTML = hours + " : " + minutes + " : " + seconds;
+  hexclock.innerHTML = color;
+  document.body.bgColor = color;
 }
 
-setInterval(getTime, 1);
+setInterval(updateTime, 1000);
